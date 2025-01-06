@@ -4,12 +4,17 @@ const qrcode = require('qrcode-terminal');
 const fs = require('fs');
 const app = express();
 app.use(express.json());
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 const client = new Client({
-    // authStrategy: new LocalAuth(),
+    
     puppeteer: {
-        args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        headless:true,
+
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+
     },
+
+    authStrategy: new LocalAuth() // Use LocalAuth for session management
 });
 client.on('qr', (qr) => {
     console.log('QR RECEIVED', qr);
@@ -17,6 +22,7 @@ client.on('qr', (qr) => {
 });
 client.on('ready', () => {
     console.log('Client is ready!');
+    await delay(20000);
 });
 client.initialize();
 app.get('/send', async (req, res) => {
