@@ -1,7 +1,7 @@
 {
-    "main": "api/app.js",
+    "main": "app.js",
     "scripts": {
-        "start": "node api/app.js"
+        "start": "node app.js"
     },
     "dependencies": {
         "dotenv":"^16.4.5",
