@@ -20,7 +20,7 @@ client.on('qr', (qr) => {
     console.log('QR RECEIVED', qr);
     qrcode.generate(qr, { small: true });
 });
-client.on('ready', () => {
+client.on('ready',async () => {
     console.log('Client is ready!');
     await delay(20000);
 });
