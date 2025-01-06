@@ -43,7 +43,7 @@ app.get('/sendMedia', async (req, res) => {
         res.status(404).send({ error: 'Failed to send message' });
     }
 });
-const PORT = 3000;
+const PORT = 80;
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
